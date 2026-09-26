@@ -27,9 +27,19 @@ const scanner_Y2 = 0;
 const scanner_width2 = 40;
 const scanner_height2 = 500;
 
-function update() {
 
+function moving_scanner_1() {
     scanner_X1 = scanner_X1 + 1 * movement1;
+
+    if (scanner_X1 + scanner_width1 >= (partical_X1 + partical_width1)) {
+        scanner_X1 = (partical_X1 + partical_width1) - scanner_width1;
+        movement1 = -1
+    } else if (scanner_X1 <= 0) {
+        scanner_X1 = 0;
+        movement1 = 1
+    }
+}
+function moving_scanner_2() {
     scanner_X2 = scanner_X2 + 2 * movement2;
 
     if (scanner_X2 + scanner_width2 >= windowWidth) {
@@ -39,16 +49,29 @@ function update() {
         scanner_X2 = partical_X1 + partical_width1;
         movement2 = 1;
     }
+}
 
-    if (scanner_X1 + scanner_width1 >= (partical_X1 + partical_width1)) {
-        scanner_X1 = (partical_X1 + partical_width1) - scanner_width1;
-        movement1 = -1
-    } else if (scanner_X1 <= 0) {
-        scanner_X1 = 0;
-        movement1 = 1
-    }
+function update() {
+    moving_scanner_1();
+    moving_scanner_2();
 
 
+    // scanner_X1 = scanner_X1 + 1 * movement1;
+    // scanner_X2 = scanner_X2 + 2 * movement2;
+    // if (scanner_X2 + scanner_width2 >= windowWidth) {
+    //     scanner_X2 = windowWidth - scanner_width2;
+    //     movement2 = -1;
+    // } else if (scanner_X2 <= partical_X1 + partical_width1) {
+    //     scanner_X2 = partical_X1 + partical_width1;
+    //     movement2 = 1;
+    // }
+    // if (scanner_X1 + scanner_width1 >= (partical_X1 + partical_width1)) {
+    //     scanner_X1 = (partical_X1 + partical_width1) - scanner_width1;
+    //     movement1 = -1
+    // } else if (scanner_X1 <= 0) {
+    //     scanner_X1 = 0;
+    //     movement1 = 1
+    // }
 
 }
 
