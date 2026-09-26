@@ -13,8 +13,13 @@ let movement = 1;
 
 const partical_X1 = 200;
 const partical_Y1 = 0;
-const partical_width = 100;
-const partical_height = 500;
+const partical_width1 = 100;
+const partical_height1 = 500;
+
+const partical_X2 = 500;
+const partical_Y2 = 0;
+const partical_width2 = 20;
+const partical_height2 = 500;
 
 function update() {
 
@@ -40,8 +45,11 @@ function setup() {
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.BLACK);
-    r.DrawRectangle(partical_X1, partical_Y1, partical_width, partical_height, r.BLUE);
-    if (scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width) {
+    r.DrawRectangle(partical_X1, partical_Y1, partical_width1, partical_height1, r.BLUE);
+
+    r.DrawRectangle(partical_X2, partical_Y2, partical_width2, partical_height2, r.BLUE);
+
+    if (scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width1) {
         r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
     } else {
         r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
