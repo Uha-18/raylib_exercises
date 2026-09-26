@@ -24,8 +24,8 @@ const partical_height2 = 500;
 function update() {
 
     scanner_X += 1 * movement
-    if (scanner_X + scanner_width >= windowWidth) {
-        scanner_X = windowWidth - scanner_width
+    if (scanner_X + scanner_width >= (partical_X1 + partical_width1)) {
+        scanner_X = (partical_X1 + partical_width1) - scanner_width;
         movement = -1
     } else if (scanner_X <= 0) {
         scanner_X = 0;
@@ -49,19 +49,11 @@ function draw() {
 
     r.DrawRectangle(partical_X2, partical_Y2, partical_width2, partical_height2, r.BLUE);
 
-    if (scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width1) {
+    if ((scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width1) || (scanner_X > partical_X2 - scanner_width && scanner_X < partical_X2 + partical_width2)) {
         r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
     } else {
         r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
     }
-
-    if (scanner_X > partical_X2 - scanner_width && scanner_X < partical_X2 + partical_width2) {
-        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
-    } else {
-        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
-    }
-
-
 
     r.EndDrawing();
 }
