@@ -14,11 +14,11 @@ let movement = 1;
 function update() {
 
     X += 4 * movement
-    if (X + width >= windowWidth + 200) {
+    if (X + width >= windowWidth) {
         X = windowWidth - width
         movement = -1
     } else if (X <= 0) {
-        X = 0;
+        X = 200;
         movement = 1
     }
 }
