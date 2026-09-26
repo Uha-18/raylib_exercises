@@ -4,10 +4,10 @@ const FPS = 60;
 const windowWidth = 700;
 const windowHeight = 500;
 
-let X = 0;
-const Y = 0;
-const width = 40;
-const height = 500;
+let scanner_X = 0;
+const scanner_Y = 0;
+const scanner_width = 40;
+const scanner_height = 500;
 
 let movement = 1;
 
@@ -35,7 +35,8 @@ function setup() {
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.BLACK);
-    r.DrawRectangle(X, Y, width, height, r.WHITE);
+    r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
+    r.DrawRectangle(300, 0, 80, 500, r.WHITE);
     r.EndDrawing();
 }
 
