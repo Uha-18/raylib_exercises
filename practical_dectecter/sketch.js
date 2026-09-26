@@ -4,12 +4,14 @@ const FPS = 60;
 const windowWidth = 700;
 const windowHeight = 500;
 
-const X = 0;
+let X = 0;
 const Y = 0;
-const width = 50;
+const width = 40;
 const height = 500;
 
-
+function update() {
+    return X = X + 4;
+}
 
 function running() {
     return !r.WindowShouldClose();
@@ -33,6 +35,7 @@ function teardown() {
 
 module.exports = {
     running,
+    update,
     setup,
     draw,
     teardown,
