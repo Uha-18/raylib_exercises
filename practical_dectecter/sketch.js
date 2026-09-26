@@ -55,6 +55,13 @@ function draw() {
         r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
     }
 
+    if (scanner_X > partical_X2 - scanner_width && scanner_X < partical_X2 + partical_width2) {
+        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
+    } else {
+        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
+    }
+
+
 
     r.EndDrawing();
 }
