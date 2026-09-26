@@ -9,12 +9,18 @@ const Y = 0;
 const width = 40;
 const height = 500;
 
+let movement = 1;
+
 function update() {
 
-    if (X === windowWidth) {
-        X = X - 4;
-    } X = X + 4;
-    return X
+    X += 4 * movement
+    if (X + width >= windowWidth) {
+        X = windowWidth - width
+        movement = -1
+    } else if (X <= 0) {
+        X = 0;
+        movement = 1
+    }
 }
 
 function running() {
