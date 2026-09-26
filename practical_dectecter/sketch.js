@@ -1,6 +1,6 @@
 const r = require("raylib");
 
-const FPS = 60;
+const FPS = 100;
 const windowWidth = 700;
 const windowHeight = 500;
 
@@ -11,14 +11,19 @@ const scanner_height = 500;
 
 let movement = 1;
 
+const partical_X1 = 200;
+const partical_Y1 = 0;
+const partical_width = 100;
+const partical_height = 500;
+
 function update() {
 
-    X += 4 * movement
-    if (X + width >= windowWidth) {
-        X = windowWidth - width
+    scanner_X += 1 * movement
+    if (scanner_X + scanner_width >= windowWidth) {
+        scanner_X = windowWidth - scanner_width
         movement = -1
-    } else if (X <= 0) {
-        X = 200;
+    } else if (scanner_X <= 0) {
+        scanner_X = 0;
         movement = 1
     }
 }
@@ -35,8 +40,14 @@ function setup() {
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.BLACK);
-    r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
-    r.DrawRectangle(300, 0, 80, 500, r.WHITE);
+    r.DrawRectangle(partical_X1, partical_Y1, partical_width, partical_height, r.BLUE);
+    if (scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width) {
+        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
+    } else {
+        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
+    }
+
+
     r.EndDrawing();
 }
 
