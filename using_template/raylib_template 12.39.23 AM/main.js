@@ -1,7 +1,7 @@
-const s = require("./sketch");
+const s = require("sketch");
 
 function loop() {
-  while (s.running()) {
+  while (sketch.running()) {
     s.update();
     s.draw();
   }

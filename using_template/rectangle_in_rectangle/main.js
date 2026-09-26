@@ -2,7 +2,6 @@ const s = require("./sketch");
 
 function loop() {
   while (s.running()) {
-    s.update();
     s.draw();
   }
 }
