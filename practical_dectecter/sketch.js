@@ -10,7 +10,11 @@ const width = 40;
 const height = 500;
 
 function update() {
-    return X = X + 4;
+
+    if (X === windowWidth) {
+        X = X - 4;
+    } X = X + 4;
+    return X
 }
 
 function running() {
