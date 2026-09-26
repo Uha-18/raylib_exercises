@@ -4,12 +4,13 @@ const FPS = 100;
 const windowWidth = 700;
 const windowHeight = 500;
 
-let scanner_X = 0;
-const scanner_Y = 0;
-const scanner_width = 40;
-const scanner_height = 500;
+let scanner_X1 = 0;
+const scanner_Y1 = 0;
+const scanner_width1 = 40;
+const scanner_height1 = 500;
 
-let movement = 1;
+let movement1 = 1;
+let movement2 = 1;
 
 const partical_X1 = 200;
 const partical_Y1 = 0;
@@ -21,16 +22,34 @@ const partical_Y2 = 0;
 const partical_width2 = 20;
 const partical_height2 = 500;
 
+let scanner_X2 = partical_X1 + partical_width1;
+const scanner_Y2 = 0;
+const scanner_width2 = 40;
+const scanner_height2 = 500;
+
 function update() {
 
-    scanner_X += 1 * movement
-    if (scanner_X + scanner_width >= (partical_X1 + partical_width1)) {
-        scanner_X = (partical_X1 + partical_width1) - scanner_width;
-        movement = -1
-    } else if (scanner_X <= 0) {
-        scanner_X = 0;
-        movement = 1
+    scanner_X1 = scanner_X1 + 1 * movement1;
+    scanner_X2 = scanner_X2 + 2 * movement2;
+
+    if (scanner_X2 + scanner_width2 >= windowWidth) {
+        scanner_X2 = windowWidth - scanner_width2;
+        movement2 = -1;
+    } else if (scanner_X2 <= partical_X1 + partical_width1) {
+        scanner_X2 = partical_X1 + partical_width1;
+        movement2 = 1;
     }
+
+    if (scanner_X1 + scanner_width1 >= (partical_X1 + partical_width1)) {
+        scanner_X1 = (partical_X1 + partical_width1) - scanner_width1;
+        movement1 = -1
+    } else if (scanner_X1 <= 0) {
+        scanner_X1 = 0;
+        movement1 = 1
+    }
+
+
+
 }
 
 function running() {
@@ -49,10 +68,17 @@ function draw() {
 
     r.DrawRectangle(partical_X2, partical_Y2, partical_width2, partical_height2, r.BLUE);
 
-    if ((scanner_X > partical_X1 - scanner_width && scanner_X < partical_X1 + partical_width1) || (scanner_X > partical_X2 - scanner_width && scanner_X < partical_X2 + partical_width2)) {
-        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.RED);
+    if ((scanner_X1 > partical_X1 - scanner_width1 && scanner_X1 < partical_X1 + partical_width1) || (scanner_X1 > partical_X2 - scanner_width1 && scanner_X1 < partical_X2 + partical_width2)) {
+        r.DrawRectangle(scanner_X1, scanner_Y1, scanner_width1, scanner_height1, r.RED);
     } else {
-        r.DrawRectangle(scanner_X, scanner_Y, scanner_width, scanner_height, r.WHITE);
+        r.DrawRectangle(scanner_X1, scanner_Y1, scanner_width1, scanner_height1, r.WHITE);
+    }
+    r.DrawRectangle(scanner_X2, scanner_Y2, scanner_width2, scanner_height1, r.WHITE);
+
+    if ((scanner_X2 > partical_X2 - scanner_width2 && scanner_X2 < partical_X2 + partical_width2)) {
+        r.DrawRectangle(scanner_X2, scanner_Y2, scanner_width2, scanner_height2, r.RED);
+    } else {
+        r.DrawRectangle(scanner_X2, scanner_Y2, scanner_width2, scanner_height2, r.WHITE);
     }
 
     r.EndDrawing();
