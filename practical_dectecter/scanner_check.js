@@ -1,7 +1,7 @@
 const r = require("raylib");
 
 function isOutOfBoundaries(startX, end, width, start_boundary) {
-    return startX + width === end || startX < start_boundary;
+    return startX + width > end || startX < start_boundary;
 }
 
 function changeDirection(startX, end, width, start_boundary, speed) {
