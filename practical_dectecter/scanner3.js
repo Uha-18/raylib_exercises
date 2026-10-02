@@ -1,8 +1,8 @@
-const windowWidth = 900;
+const S = require("./screenDimensions");
 
 const X = 0;
 let Y = 0;
-const width = windowWidth;
+const width = S.windowWidth;
 const height = 40;
 
 module.exports = {
@@ -10,6 +10,4 @@ module.exports = {
     Y,
     width,
     height,
-    particalheight,
-    particalY,
 };

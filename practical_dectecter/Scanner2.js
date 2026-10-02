@@ -1,16 +1,13 @@
-const windowWidth = 900;
-const windowHeight = 700;
+const S = require("./screenDimensions");
 
-let X = windowWidth / 2;
+let X = S.windowWidth / 2;
 const Y = 0;
 const width = 40;
-const height = windowHeight;
+const height = S.windowHeight;
 
 module.exports = {
     X,
     Y,
     width,
     height,
-    particalwidth,
-    particalX,
 };

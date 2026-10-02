@@ -4,14 +4,14 @@ function isOutOfBoundaries(startX, end, width, start_boundary) {
     return startX + width > end || startX < start_boundary;
 }
 
-function changeDirection(startX, end, width, start_boundary, speed) {
+function changeDirection(startX, end, width, start_boundary, velocity) {
     return isOutOfBoundaries(startX, end, width, start_boundary)
-        ? -speed
-        : speed;
+        ? -velocity
+        : velocity;
 }
 
 function choose_colour(start1, end1, start2, end2) {
-    return end1 > start2 && start1 <= end2 ? r.RED : r.WHITE;
+    return end1 > start2 && start1 <= end2;
 }
 
 module.exports = {
