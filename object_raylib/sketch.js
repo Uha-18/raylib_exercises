@@ -1,5 +1,6 @@
 const r = require("raylib");
-const rect = { x: 0, y: 0, width: 20, height: 20 };
+const rect = { x: 0, y: 0, width: 30, height: 30 };
+const colour = { r: 255, g: 0, b: 0, a: 255 };
 
 const windowWidth = 700;
 const windowHeight = 500;
@@ -23,18 +24,20 @@ function running() {
     return !r.WindowShouldClose();
 }
 function update() {
+    colour.a -= 10;
+
     movement = changeDirection(rect, windowWidth, movement);
     rect.x += movement;
 }
 function setup() {
     r.InitWindow(windowWidth, windowHeight, "objects");
-    r.SetTargetFPS(5);
+    r.SetTargetFPS(7);
 }
 
 function draw() {
     r.BeginDrawing();
     // r.ClearBackground(r.BLACK);
-    r.DrawRectangleRec(rect, r.WHITE);
+    r.DrawRectangleRec(rect, colour);
     r.EndDrawing();
 }
 
