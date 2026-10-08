@@ -32,6 +32,9 @@ function chooseRings(i, j, ring, world) {
 }
 
 function ringPosition(x, y) {
+    x = x + 2 * world.innerRadius + thickness;
+    y = y + 2 * world.innerRadius + thickness;
+
     return { x, y };
 }
 function ring1(ring, world) {
@@ -66,10 +69,8 @@ function draw(world) {
         for (let j = 1; j <= world.noOfCol; j++) {
             // world.colour = chooseColour(i, j, world);
             chooseRings(i, j, ring, world);
-            ring.x = ring.x + 2 * world.innerRadius + thickness;
         }
         ring.x = world.innerRadius;
-        ring.y = ring.y + 2 * world.innerRadius + thickness;
     }
     r.EndDrawing();
 }
