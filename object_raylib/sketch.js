@@ -24,7 +24,7 @@ function running() {
     return !r.WindowShouldClose();
 }
 function update() {
-    colour.a -= 10;
+    // colour.a -= 10;
 
     movement = changeDirection(rect, windowWidth, movement);
     rect.x += movement;
