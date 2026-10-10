@@ -4,7 +4,7 @@ function setup() {
     const world = {};
     world.windowWidth = 800;
     world.windowHeight = 600;
-    world.FPS = 5;
+    world.FPS = 2;
     world.gap = 10;
     world.width = 70;
     world.innerRadius = 40;
@@ -32,9 +32,6 @@ function chooseRings(i, j, ring, world) {
 }
 
 function ringPosition(x, y) {
-    x = x + 2 * world.innerRadius + thickness;
-    y = y + 2 * world.innerRadius + thickness;
-
     return { x, y };
 }
 function ring1(ring, world) {
@@ -67,10 +64,11 @@ function draw(world) {
     const thickness = world.outerRadius - world.innerRadius;
     for (let i = 1; i <= world.noOfRows; i++) {
         for (let j = 1; j <= world.noOfCol; j++) {
-            // world.colour = chooseColour(i, j, world);
             chooseRings(i, j, ring, world);
+            ring.x = ring.x + 2 * world.innerRadius + thickness;
         }
         ring.x = world.innerRadius;
+        ring.y = ring.y + 2 * world.innerRadius + thickness;
     }
     r.EndDrawing();
 }
@@ -88,3 +86,11 @@ function main() {
     loop(world);
 }
 main();
+
+r.DrawCircle3D(
+    { x: 100, y: 100, z: 100 },
+    100,
+    { x: 40, y: 90, z: 130 },
+    50,
+    r.WHITE,
+);
