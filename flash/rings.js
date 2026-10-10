@@ -4,7 +4,7 @@ function setup() {
     const world = {};
     world.windowWidth = 800;
     world.windowHeight = 600;
-    world.FPS = 2;
+    world.FPS = 5;
     world.gap = 10;
     world.width = 70;
     world.innerRadius = 40;
