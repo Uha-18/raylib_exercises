@@ -4,49 +4,54 @@ function setup() {
     const windowWidth = 800;
     const windowHeight = 800;
 
-    const world = {};
+    const world = {
+        angle: 0,
+        radius: 0,
+        points: [],
+        cf: 0,
+    };
 
     r.SetTraceLogLevel(r.LOG_NONE);
-    r.InitWindow(windowWidth, windowHeight, "greece");
-    r.SetTargetFPS(8);
-    // return world;
-}
-function positionObject(x, y) {
-    return { x, y };
+    r.InitWindow(windowWidth, windowHeight, "spinner");
+    r.SetTargetFPS(50);
+    return world;
 }
 
-const radius = 300;
+function update(world) {
+    world.angle = world.angle + 0.2;
+    world.radius = world.radius + 0.4;
+
+    let x = 400 + world.radius * Math.cos(world.angle);
+    let y = 400 + world.radius * Math.sin(world.angle);
+
+    world.points.push({ x: x, y: y });
+}
+
 function draw(world) {
     r.BeginDrawing();
+
     r.ClearBackground(r.BLACK);
-    const position = positionObject(400, 400);
-    r.DrawCircle(position.x, position.y, radius, r.RED);
-    r.DrawRing(position, radius + 3, radius, -90, 90, 30, r.GRAY);
 
-    // for (let row = 0; row < world.noOfCells; row++) {
-    //     let y = row * world.cellHeight;
+    for (let i = 0; i < world.points.length; i++) {
+        let point = world.points[i];
 
-    //     for (let col = 0; col < world.noOfCells; col++) {
-    //         const x = col * world.cellWidth;
-    //         const colour = chooseColour(row, col, world);
+        r.DrawCircle(point.x, point.y, 3, r.RED);
+    }
 
-    //         r.DrawRectangle(x, y, world.cellWidth, world.cellHeight, colour);
-    //     }
-    // }
     r.EndDrawing();
 }
 
 function loop(world) {
     while (!r.WindowShouldClose()) {
-        // no update!
+        update(world);
         draw(world);
-        // world.offset = world.offset + 1;
     }
 }
 
 function main() {
     const world = setup();
     loop(world);
+    world.cf++;
     r.CloseWindow();
 }
 

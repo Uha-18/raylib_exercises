@@ -77,7 +77,7 @@ function loop(world) {
     while (!r.WindowShouldClose()) {
         // no update!
         draw(world);
-        world.cf++;
+        // world.cf++;
     }
 }
 
