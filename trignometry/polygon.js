@@ -16,7 +16,7 @@ function setup() {
 }
 
 function points() {
-    const noOfPoints = 7;
+    const noOfPoints = 4;
     const radians = (2 * Math.PI) / noOfPoints;
     let prevX = 0;
     let prevY = 0;

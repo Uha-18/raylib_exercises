@@ -16,9 +16,10 @@ function setup() {
 }
 
 function points() {
-    const noOfPoints = 12;
+    const noOfPoints = 5;
+    const radians = (2 * Math.PI) / noOfPoints;
     for (let i = 0; i < noOfPoints; i++) {
-        const angle = i * (Math.PI / 6);
+        const angle = i * radians;
         x = 200 + 150 * Math.cos(angle);
         y = 200 + 150 * Math.sin(angle);
         r.DrawCircle(x, y, 3, r.RED);
