@@ -26,9 +26,9 @@ function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
 
-    const startAx = 350;
-    const startAy = 150;
-    const startBx = 100;
+    const startAx = 100;
+    const startAy = 350;
+    const startBx = 200;
     const startBy = 300;
 
     r.DrawCircle(startAx, startAy, 3, r.BLUE);

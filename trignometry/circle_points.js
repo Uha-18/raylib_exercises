@@ -16,7 +16,7 @@ function setup() {
 }
 
 function points() {
-    const noOfPoints = 3;
+    const noOfPoints = 12;
     const radians = (2 * Math.PI) / noOfPoints;
     for (let i = 0; i < noOfPoints; i++) {
         const angle = i * radians;
