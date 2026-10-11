@@ -18,7 +18,7 @@ function setup() {
 }
 
 function update(world) {
-    world.angle = world.angle + 0.2;
+    world.angle = world.angle + 0.1;
     world.radius = world.radius + 0.4;
 
     let x = 400 + world.radius * Math.cos(world.angle);
