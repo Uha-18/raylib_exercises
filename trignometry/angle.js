@@ -26,20 +26,20 @@ function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
 
-    const startX1 = 350;
-    const startY1 = 150;
-    const startX2 = 100;
-    const startY2 = 300;
+    const startAx = 350;
+    const startAy = 150;
+    const startBx = 100;
+    const startBy = 300;
 
-    r.DrawCircle(startX1, startY1, 3, r.BLUE);
-    r.DrawCircle(startX2, startY2, 3, r.RED);
+    r.DrawCircle(startAx, startAy, 3, r.BLUE);
+    r.DrawCircle(startBx, startBy, 3, r.RED);
 
-    r.DrawLine(startX2, startY2, startX1, startY1, r.BLACK); //hyp
-    r.DrawLine(startX2, startY2, startX1, startY2, r.BLACK); //adj
-    r.DrawLine(startX1, startY1, startX1, startY2, r.BLACK); //opp
+    r.DrawLine(startBx, startBy, startAx, startAy, r.BLACK); //hyp
+    r.DrawLine(startBx, startBy, startAx, startBy, r.BLACK); //adj
+    r.DrawLine(startAx, startAy, startAx, startBy, r.BLACK); //opp
 
-    const adj = distance(startX2, startY2, startX1, startY2);
-    const opp = distance(startX1, startY1, startX1, startY2);
+    const adj = distance(startBx, startBy, startAx, startBy);
+    const opp = distance(startAx, startAy, startAx, startBy);
 
     const degree = angle(opp, adj) * (180 / Math.PI);
 
