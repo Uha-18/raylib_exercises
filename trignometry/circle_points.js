@@ -16,7 +16,8 @@ function setup() {
 }
 
 function points() {
-    for (let i = 0; i < 12; i++) {
+    const noOfPoints = 12;
+    for (let i = 0; i < noOfPoints; i++) {
         const angle = i * (Math.PI / 6);
         x = 200 + 150 * Math.cos(angle);
         y = 200 + 150 * Math.sin(angle);
