@@ -16,7 +16,7 @@ function setup() {
 }
 
 function points() {
-    const noOfPoints = 5;
+    const noOfPoints = 3;
     const radians = (2 * Math.PI) / noOfPoints;
     for (let i = 0; i < noOfPoints; i++) {
         const angle = i * radians;
@@ -28,8 +28,8 @@ function points() {
 }
 function draw(world) {
     r.BeginDrawing();
-    r.ClearBackground(r.BLACK);
-    r.DrawCircle(world.centreX, world.centreY, world.radius, r.WHITE);
+    r.ClearBackground(r.WHITE);
+    r.DrawCircleLines(world.centreX, world.centreY, world.radius, r.BLACK);
     points();
 
     r.EndDrawing();

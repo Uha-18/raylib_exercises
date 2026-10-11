@@ -9,22 +9,22 @@ function setup() {
     world.centreY = 200;
     world.radius = 150;
 
-    r.InitWindow(windowWidth, windowHeight, "circle points");
+    r.InitWindow(windowWidth, windowHeight, "polygon");
     r.SetTargetFPS(FPS);
 
     return world;
 }
 
-function points() {
-    const noOfPoints = 4;
+function points(world) {
+    const noOfPoints = 7;
     const radians = (2 * Math.PI) / noOfPoints;
     let prevX = 0;
     let prevY = 0;
 
     for (let i = 0; i <= noOfPoints; i++) {
         const angle = i * radians;
-        const x = 200 + 150 * Math.cos(angle);
-        const y = 200 + 150 * Math.sin(angle);
+        const x = world.centreX + world.radius * Math.cos(angle);
+        const y = world.centreY + world.radius * Math.sin(angle);
         r.DrawCircle(x, y, 3, r.RED);
 
         if (prevX !== 0 && prevY !== 0) {
@@ -35,14 +35,12 @@ function points() {
         prevY = y;
     }
 }
-function update() {
-    points();
-}
+
 function draw(world) {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
-    r.DrawCircle(world.centreX, world.centreY, world.radius, r.BLUE);
-    points();
+    r.DrawCircleLines(world.centreX, world.centreY, world.radius, r.BLUE);
+    points(world);
 
     r.EndDrawing();
 }
