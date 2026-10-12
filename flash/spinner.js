@@ -18,8 +18,8 @@ function setup() {
 }
 
 function update(world) {
-    world.angle = world.angle + 0.1;
-    world.radius = world.radius + 0.4;
+    world.angle = world.angle + 0.2;
+    world.radius = world.radius + 0.3;
 
     let x = 400 + world.radius * Math.cos(world.angle);
     let y = 400 + world.radius * Math.sin(world.angle);
