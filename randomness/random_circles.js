@@ -2,31 +2,19 @@ const r = require("raylib");
 
 function setup() {
     r.SetTraceLogLevel(r.LOG_NONE);
-    r.InitWindow(800, 500, "random circles");
-    r.SetTargetFPS(60);
-
-    const world = {};
-    const n = 100;
-    world.points = random(n);
-
-    return world;
+    r.InitWindow(800, 600, "random circles");
+    r.SetTargetFPS(10);
 }
 
-function random(n) {
-    const points = [];
-
-    for (i = 0; i < n; i++) {
-        points.push(200 + Math.random() * 400);
-    }
-    return points;
-}
-
-function draw(world) {
+function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.DARKBLUE);
 
-    for (const x of world.points) {
-        r.DrawCircle(x, x, 5, r.WHITE);
+    for (i = 0; i < 500; i++) {
+        const x = Math.random() * r.GetScreenWidth();
+        const y = Math.random() * r.GetScreenHeight();
+        const rad = Math.random() * 8;
+        r.DrawCircle(x, y, rad, r.WHITE);
     }
 
     r.EndDrawing();
@@ -36,15 +24,15 @@ function teardown() {
     r.CloseWindow();
 }
 
-function loop(world) {
+function loop() {
     while (!r.WindowShouldClose()) {
-        draw(world);
+        draw();
     }
 }
 
 function main() {
-    const world = setup();
-    loop(world);
+    setup();
+    loop();
     teardown();
 }
 
