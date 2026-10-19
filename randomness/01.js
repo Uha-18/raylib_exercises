@@ -16,7 +16,7 @@ function random(n) {
     const points = [];
 
     for (i = 0; i < n; i++) {
-        points.push(Math.random() * r.GetScreenWidth());
+        points.push(200 + Math.random() * 400);
     }
     return points;
 }
