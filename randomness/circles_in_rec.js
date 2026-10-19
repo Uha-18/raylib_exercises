@@ -20,7 +20,6 @@ function draw() {
     r.DrawRectangleLines(200, 100, 400, 400, r.RED);
     r.EndDrawing();
 }
-
 function teardown() {
     r.CloseWindow();
 }
