@@ -13,10 +13,11 @@ function draw() {
     for (i = 0; i < 500; i++) {
         const x = 200 + Math.random() * 400;
         const y = 100 + Math.random() * 400;
-        const rad = Math.random() * 8;
+        const rad = 5;
+
         r.DrawCircle(x, y, rad, r.WHITE);
     }
-
+    r.DrawRectangleLines(200, 100, 400, 400, r.RED);
     r.EndDrawing();
 }
 
