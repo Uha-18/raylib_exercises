@@ -4,7 +4,10 @@ function setup() {
     const windowWidth = 400;
     const windowHeight = 400;
     const FPS = 50;
-    const world = {};
+    const world = {
+        A: { x: 20, y: 200 },
+        B: { x: 100, y: 300 },
+    };
 
     r.InitWindow(windowWidth, windowHeight, "circle points");
     r.SetTargetFPS(FPS);
@@ -22,24 +25,19 @@ function distance(x1, y1, x2, y2) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-function draw() {
+function draw(world) {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
 
-    const startAx = 100;
-    const startAy = 350;
-    const startBx = 200;
-    const startBy = 300;
+    r.DrawCircle(world.A.x, world.A.y, 3, r.BLUE);
+    r.DrawCircle(world.B.x, world.B.y, 3, r.RED);
 
-    r.DrawCircle(startAx, startAy, 3, r.BLUE);
-    r.DrawCircle(startBx, startBy, 3, r.RED);
+    r.DrawLine(world.B.x, world.B.y, world.A.x, world.A.y, r.BLACK); //opp
+    r.DrawLine(world.B.x, world.B.y, 400, world.B.y, r.BLACK); //adj
+    r.DrawLine(world.A.x, world.A.y, 200, 300, r.BLACK); //hyp
 
-    r.DrawLine(startBx, startBy, startAx, startAy, r.BLACK); //hyp
-    r.DrawLine(startBx, startBy, startAx, startBy, r.BLACK); //adj
-    r.DrawLine(startAx, startAy, startAx, startBy, r.BLACK); //opp
-
-    const adj = distance(startBx, startBy, startAx, startBy);
-    const opp = distance(startAx, startAy, startAx, startBy);
+    const adj = distance(world.B.x, world.B.y, 400, world.B.y);
+    const opp = distance(world.B.x, world.B.y, world.A.x, world.A.y);
 
     const degree = angle(opp, adj) * (180 / Math.PI);
 

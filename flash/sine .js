@@ -21,7 +21,7 @@ function draw(world) {
     r.BeginDrawing();
     r.ClearBackground(r.WHITE);
     r.DrawRectangleGradientEx(world.rec, r.PINK, r.BLUE, r.YELLOW, r.GREEN);
-    for (let x = 400; x < 800; x++) {
+    for (let x = 0; x < 800; x++) {
         let y = 200 - 100 * Math.sin(x * 0.03 - world.cf);
 
         r.DrawCircle(x, y, 5, r.BLACK);
@@ -32,7 +32,7 @@ function draw(world) {
 function loop(world) {
     while (!r.WindowShouldClose()) {
         // update(world);
-        // world.cf++;
+        world.cf++;
         draw(world);
     }
 }
