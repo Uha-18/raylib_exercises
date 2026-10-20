@@ -20,7 +20,12 @@ function position(world, target) {
     for (j = 0; j < 8; j++) {
       x = 100 * j;
       y = 100 * i;
-      r.DrawTextureRec(target.texture, world.source[j % 2], { x, y }, r.WHITE);
+      r.DrawTextureRec(
+        target.texture,
+        world.source[(i + j) % 2],
+        { x, y },
+        r.WHITE,
+      );
     }
   }
   return { x, y };
