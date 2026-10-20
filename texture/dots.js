@@ -18,6 +18,7 @@ function draw(world, target) {
   r.ClearBackground(r.GRAY);
   r.DrawTexture(target.target1.texture, 0, 0, r.WHITE);
   r.DrawTexture(target.target2.texture, 250, 0, r.WHITE);
+  r.DrawTexture(target.target3.texture, 500, 0, r.WHITE);
 
   r.EndDrawing();
 }
@@ -68,7 +69,7 @@ function texture() {
   }
   r.EndTextureMode();
   r.EndTextureMode();
-  return { target1, target2 };
+  return { target1, target2, target3 };
 }
 
 function loop(world) {
