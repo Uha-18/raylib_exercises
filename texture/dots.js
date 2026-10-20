@@ -98,15 +98,14 @@ function texture() {
   const target7 = r.LoadRenderTexture(200, 200);
   r.BeginTextureMode(target7);
   r.ClearBackground(r.DARKBLUE);
-  let startX7 = 5;
-  let startY7 = 5;
-  for (let i = 0; i < 100; i++) {
-    for (let j = 0; j < 100; j++) {
-      startY7 = i * 20 + 5;
-      startX7 = j * 20 + 5;
-      // const max = Math.max(4 - i, j - 4);
-      if ((i + j) % 4 === 0 || (i - j + 10) % 4 === 0) {
-        r.DrawCircle(startX7, startY7, 3, r.WHITE);
+
+  const gridSize = 10;
+  const gap = 18;
+
+  for (let row = 0; row < gridSize; row++) {
+    for (let col = 0; col < gridSize; col++) {
+      if ((col + row) % 5 === 0 || (col + row) % 5 === 1) {
+        r.DrawCircle(15 + col * gap, 15 + row * gap, 4, r.WHITE);
       }
     }
   }
