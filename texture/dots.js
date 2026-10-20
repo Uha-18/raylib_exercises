@@ -104,8 +104,8 @@ function texture() {
     for (let j = 0; j < 100; j++) {
       startY7 = i * 20 + 5;
       startX7 = j * 20 + 5;
-      const max = Math.max(4 - i, j - 4);
-      if (max === 0 || max === 2 || max === 4) {
+      // const max = Math.max(4 - i, j - 4);
+      if ((i + j) % 4 === 0 || (i - j + 10) % 4 === 0) {
         r.DrawCircle(startX7, startY7, 3, r.WHITE);
       }
     }
