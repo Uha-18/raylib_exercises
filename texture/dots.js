@@ -17,10 +17,11 @@ function draw(world, target) {
   r.BeginDrawing();
   r.ClearBackground(r.GRAY);
   r.DrawTexture(target.target1.texture, 0, 0, r.WHITE);
-  r.DrawTexture(target.target2.texture, 250, 0, r.WHITE);
-  r.DrawTexture(target.target3.texture, 500, 0, r.WHITE);
-  r.DrawTexture(target.target5.texture, 250, 220, r.WHITE);
-  r.DrawTexture(target.target6.texture, 500, 220, r.WHITE);
+  r.DrawTexture(target.target2.texture, 210, 0, r.WHITE);
+  r.DrawTexture(target.target3.texture, 420, 0, r.WHITE);
+  r.DrawTexture(target.target5.texture, 210, 210, r.WHITE);
+  r.DrawTexture(target.target6.texture, 420, 210, r.WHITE);
+  r.DrawTexture(target.target7.texture, 0, 420, r.WHITE);
 
   r.EndDrawing();
 }
@@ -85,15 +86,32 @@ function texture() {
   let startY6 = 5;
   for (let i = 0; i < 100; i++) {
     for (let j = 0; j < 100; j++) {
-      startY6 = i * 10 + 5;
-      startX6 = j * 10 + 5;
+      startY6 = i * 20 + 5;
+      startX6 = j * 20 + 5;
       if (i % 3 !== 2 && (i + j) % 3 === 1) {
         r.DrawCircle(startX6, startY6, 3, r.WHITE);
       }
     }
   }
   r.EndTextureMode();
-  return { target1, target2, target3, target5, target6 };
+
+  const target7 = r.LoadRenderTexture(200, 200);
+  r.BeginTextureMode(target7);
+  r.ClearBackground(r.DARKBLUE);
+  let startX7 = 5;
+  let startY7 = 5;
+  for (let i = 0; i < 100; i++) {
+    for (let j = 0; j < 100; j++) {
+      startY7 = i * 20 + 5;
+      startX7 = j * 20 + 5;
+      const max = Math.max(4 - i, j - 4);
+      if (max === 0 || max === 2 || max === 4) {
+        r.DrawCircle(startX7, startY7, 3, r.WHITE);
+      }
+    }
+  }
+  r.EndTextureMode();
+  return { target1, target2, target3, target5, target6, target7 };
 }
 
 function loop(world) {
