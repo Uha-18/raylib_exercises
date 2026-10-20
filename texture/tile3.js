@@ -6,8 +6,8 @@ function setup() {
 
   const world = {};
   world.source = [
-    { x: 0, y: 0, width: 200, height: 200 },
-    { x: 0, y: 0, width: -200, height: 200 },
+    { x: 0, y: 0, width: 100, height: 100 },
+    { x: 0, y: 0, width: -100, height: -100 },
   ];
 
   return world;
@@ -16,16 +16,11 @@ function setup() {
 function position(world, target) {
   let x = 0;
   let y = 0;
-  for (i = 0; i < 4; i++) {
-    for (j = 0; j < 4; j++) {
-      x = 200 * j;
-      y = 200 * i;
-      r.DrawTextureRec(
-        target.texture,
-        world.source[(i + j) % 2],
-        { x, y },
-        r.WHITE,
-      );
+  for (i = 0; i < 8; i++) {
+    for (j = 0; j < 8; j++) {
+      x = 100 * j;
+      y = 100 * i;
+      r.DrawTextureRec(target.texture, world.source[j % 2], { x, y }, r.WHITE);
     }
   }
   return { x, y };
@@ -34,22 +29,21 @@ function position(world, target) {
 function draw(world, target) {
   r.BeginDrawing();
   r.ClearBackground(r.GRAY);
-
   position(world, target);
-
   r.EndDrawing();
 }
 
 function texture() {
-  const target = r.LoadRenderTexture(300, 300);
+  const target = r.LoadRenderTexture(100, 100);
   r.BeginTextureMode(target);
   r.ClearBackground(r.DARKBLUE);
 
-  let startX = 0;
-  for (i = 0; i < 100; i++) {
-    startX += 30;
-    r.DrawLine(startX, 0, 0, startX, r.WHITE);
-  }
+  r.DrawTriangle(
+    { x: 100, y: 100 },
+    { x: 100, y: 0 },
+    { x: 0, y: 100 },
+    r.WHITE,
+  );
 
   r.EndTextureMode();
 
