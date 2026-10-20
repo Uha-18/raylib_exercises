@@ -19,57 +19,81 @@ function draw(world, target) {
   r.DrawTexture(target.target1.texture, 0, 0, r.WHITE);
   r.DrawTexture(target.target2.texture, 250, 0, r.WHITE);
   r.DrawTexture(target.target3.texture, 500, 0, r.WHITE);
+  r.DrawTexture(target.target5.texture, 250, 220, r.WHITE);
+  r.DrawTexture(target.target6.texture, 500, 220, r.WHITE);
 
   r.EndDrawing();
 }
 
 function texture() {
+  //horizontal line
   const target1 = r.LoadRenderTexture(200, 200);
   r.BeginTextureMode(target1);
   r.ClearBackground(r.DARKBLUE);
 
-  let startX1 = 3;
-  let startY1 = 3;
-  for (i = 0; i < 100; i++) {
-    for (j = 0; j < 100; j++) {
-      startY1 = i * 30;
-      startX1 = j * 10;
-      r.DrawCircle(startX1, startY1, 3, r.WHITE);
+  for (let x = 3; x <= 200; x += 30) {
+    for (let y = 3; y <= 200; y += 10) {
+      r.DrawCircle(x, y, 3, r.WHITE);
     }
   }
   r.EndTextureMode();
-
+  //vertical lines
   const target2 = r.LoadRenderTexture(200, 200);
   r.BeginTextureMode(target2);
   r.ClearBackground(r.DARKBLUE);
 
-  let startX2 = 3;
-  let startY2 = 3;
-  for (i = 0; i < 100; i++) {
-    for (j = 0; j < 100; j++) {
-      startY2 = i * 10;
-      startX2 = j * 30;
-      r.DrawCircle(startX2, startY2, 3, r.WHITE);
+  for (let x = 3; x <= 200; x += 10) {
+    for (let y = 3; y <= 200; y += 30) {
+      r.DrawCircle(x, y, 3, r.WHITE);
     }
   }
   r.EndTextureMode();
-  r.EndTextureMode();
+  //checker dots
   const target3 = r.LoadRenderTexture(200, 200);
-  r.BeginTextureMode(target2);
+  r.BeginTextureMode(target3);
   r.ClearBackground(r.DARKBLUE);
 
-  let startX3 = 3;
-  let startY3 = 3;
-  for (i = 0; i < 100; i++) {
-    for (j = 0; j < 100; j++) {
-      startY1 = i * 10;
-      startX1 = j * 30;
-      r.DrawCircle(startX3, startY3, 3, r.WHITE);
+  let startX3 = 10;
+  let startY3 = 10;
+  for (let i = 0; i < 100; i++) {
+    for (let j = 0; j < 100; j++) {
+      startY3 = i * 30 + 5;
+      startX3 = j * 30 + 5;
+      if ((i + j) % 2 === 0) r.DrawCircle(startX3, startY3, 3, r.WHITE);
+    }
+  }
+
+  r.EndTextureMode();
+
+  const target5 = r.LoadRenderTexture(200, 200);
+  r.BeginTextureMode(target5);
+  r.ClearBackground(r.DARKBLUE);
+
+  for (let y = 10; y <= 200; y += 30) {
+    for (let x = 10; x <= 200; x += 30) {
+      if ((y + x) % 2 === 0) r.DrawCircle(x, y, 3, r.WHITE);
+    }
+  }
+
+  r.EndTextureMode();
+
+  const target6 = r.LoadRenderTexture(200, 200);
+  r.BeginTextureMode(target6);
+  r.ClearBackground(r.DARKBLUE);
+
+  let startX6 = 5;
+  let startY6 = 5;
+  for (let i = 0; i < 100; i++) {
+    for (let j = 0; j < 100; j++) {
+      startY6 = i * 10 + 5;
+      startX6 = j * 10 + 5;
+      if (i % 3 !== 2 && (i + j) % 3 === 1) {
+        r.DrawCircle(startX6, startY6, 3, r.WHITE);
+      }
     }
   }
   r.EndTextureMode();
-  r.EndTextureMode();
-  return { target1, target2, target3 };
+  return { target1, target2, target3, target5, target6 };
 }
 
 function loop(world) {
