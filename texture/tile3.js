@@ -1,8 +1,8 @@
 const r = require("raylib");
 function setup() {
+  r.SetTraceLogLevel(r.LOG_NONE);
   r.InitWindow(800, 800, "tile");
   r.SetTargetFPS(50);
-  r.SetTraceLogLevel(r.LOG_NONE);
 
   const world = {};
   world.source = [
@@ -14,21 +14,7 @@ function setup() {
 }
 
 function position(world, target) {
-  let x = 0;
-  let y = 0;
-  for (i = 0; i < 8; i++) {
-    for (j = 0; j < 8; j++) {
-      x = 100 * j;
-      y = 100 * i;
-      r.DrawTextureRec(
-        target.texture,
-        world.source[(i + j) % 2],
-        { x, y },
-        r.WHITE,
-      );
-    }
-  }
-  return { x, y };
+  return tile3(target, world);
 }
 
 function draw(world, target) {

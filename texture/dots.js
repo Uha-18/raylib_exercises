@@ -1,8 +1,8 @@
 const r = require("raylib");
 function setup() {
+  r.SetTraceLogLevel(r.LOG_NONE);
   r.InitWindow(800, 800, "tile");
   r.SetTargetFPS(50);
-  r.SetTraceLogLevel(r.LOG_NONE);
 
   const world = {};
   world.source = [

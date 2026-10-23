@@ -1,34 +1,30 @@
 const r = require("raylib");
+const t = require("./tilePatterns");
+
 function setup() {
+  r.SetTraceLogLevel(r.LOG_NONE);
   r.InitWindow(800, 800, "tile");
   r.SetTargetFPS(50);
-  r.SetTraceLogLevel(r.LOG_NONE);
 
   const world = {};
   world.source = [
-    { x: 0, y: 0, width: 100, height: 100 },
-    { x: 0, y: 0, width: -100, height: -100 },
+    { x: 0, y: 0, width: 30, height: 30 },
+    { x: 0, y: 0, width: -30, height: -30 },
+    { x: 0, y: 0, width: -30, height: -30 },
   ];
+  world.tile = [t.tile1, t.tile2, t.tile3, t.tile4, t.tile5, t.tile6];
 
   return world;
 }
 
 function position(world, target) {
-  let x = 0;
-  let y = 0;
-  for (i = 0; i < 8; i++) {
-    for (j = 0; j < 8; j++) {
-      x = 100 * j;
-      y = 100 * i;
-      r.DrawTextureRec(target.texture, world.source[i % 2], { x, y }, r.WHITE);
-    }
-  }
+  let { x, y } = world.tile[0](target, world);
   return { x, y };
 }
 
 function draw(world, target) {
   r.BeginDrawing();
-  r.ClearBackground(r.GRAY);
+  r.ClearBackground(r.DARKBLUE);
   position(world, target);
   r.EndDrawing();
 }
