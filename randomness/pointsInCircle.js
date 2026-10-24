@@ -27,7 +27,6 @@ function generatePoints(count, circle) {
 
     pointsArray.push({ x, y });
   }
-
   return pointsArray;
 }
 function draw(world) {
