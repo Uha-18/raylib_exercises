@@ -4,8 +4,9 @@ function setup() {
   const windowWidth = 400;
   const windowHeight = 400;
   const FPS = 50;
+
   const world = {};
-  world.circle = { x: 0, y: 0, rad: 250 };
+  world.circle = { x: 200, y: 200, rad: 150 };
   world.points = generatePoints(700, world.circle);
 
   r.SetTraceLogLevel(r.LOG_NONE);
