@@ -40,7 +40,7 @@ function randX(world, x1, factor1, x2, factor2) {
 function randomPoints(world) {
   const randPoints = [];
 
-  for (let i = 0; i < 800; i++) {
+  for (let i = 0; i < 300; i++) {
     const factor1 = Math.random();
     const factor2 = Math.random();
 
@@ -58,7 +58,7 @@ function draw(world) {
   r.ClearBackground(r.BLUE);
 
   for (const point of world.randPoints) {
-    r.DrawCircleV(point, 3, r.YELLOW);
+    r.DrawCircleV(point, 5, { r: 253, g: 249, b: 0, a: 170 });
   }
 
   r.EndDrawing();
