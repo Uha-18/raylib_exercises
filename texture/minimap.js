@@ -1,30 +1,31 @@
-// const r = require("raylib");
+const r = require("raylib");
 
-// r.InitWindow(800, 400, "sine");
-// r.SetTargetFPS(60);
-// r.SetTraceLogLevel(r.LOG_NONE);
+r.InitWindow(800, 400, "sine");
+r.SetTargetFPS(60);
+r.SetTraceLogLevel(r.LOG_NONE);
 
-// const target = r.LoadRenderTexture(200, 200);
+const target = r.LoadRenderTexture(200, 200);
 
-// r.BeginTextureMode(target);
-// r.ClearBackground(r.BLACK);
+r.BeginTextureMode(target);
+r.ClearBackground(r.BLACK);
 
-// r.DrawCircle(100, 100, 60, r.YELLOW);
-// r.DrawCircle(80, 110, 8, r.BLACK);
-// r.DrawCircle(120, 110, 8, r.BLACK);
+r.DrawCircle(100, 100, 60, r.YELLOW);
+r.DrawCircle(80, 110, 8, r.BLACK);
+r.DrawCircle(120, 110, 8, r.BLACK);
+r.DrawRing({ x: 100, y: 70 }, 20, 25, -90, 90, 8, r.BLACK);
 
-// r.EndTextureMode();
+r.EndTextureMode();
 
-// while (!r.WindowShouldClose()) {
-//   r.BeginDrawing();
-//   r.ClearBackground(r.WHITE);
+while (!r.WindowShouldClose()) {
+  r.BeginDrawing();
+  r.ClearBackground(r.WHITE);
 
-//   r.DrawTexture(target.texture, 50, 50, r.WHITE);
-//   r.DrawTexture(target.texture, 300, 50, r.WHITE);
-//   r.DrawTexture(target.texture, 550, 50, r.WHITE);
+  r.DrawTexture(target.texture, 50, 50, r.WHITE);
+  r.DrawTexture(target.texture, 300, 50, r.WHITE);
+  r.DrawTexture(target.texture, 550, 50, r.WHITE);
 
-//   r.EndDrawing();
-// }
+  r.EndDrawing();
+}
 
 // const r = require("raylib");
 
@@ -88,51 +89,51 @@
 
 // r.CloseWindow();
 
-const r = require("raylib");
+// const r = require("raylib");
 
-const screenWidth = 800;
-const screenHeight = 600;
+// const screenWidth = 800;
+// const screenHeight = 600;
 
-r.InitWindow(screenWidth, screenHeight, "Mini-Map Tracker");
-r.SetTargetFPS(60);
-r.SetTraceLogLevel(r.LOG_NONE);
+// r.InitWindow(screenWidth, screenHeight, "Mini-Map Tracker");
+// r.SetTargetFPS(60);
+// r.SetTraceLogLevel(r.LOG_NONE);
 
-const mapSize = 150;
-const miniMap = r.LoadRenderTexture(mapSize, mapSize);
+// const mapSize = 150;
+// const miniMap = r.LoadRenderTexture(mapSize, mapSize);
 
-let playerX = 400;
-let playerY = 300;
-const speed = 5;
+// let playerX = 400;
+// let playerY = 300;
+// const speed = 5;
 
-while (!r.WindowShouldClose()) {
-  if (r.IsKeyDown(r.KEY_RIGHT) && playerX < screenWidth) playerX += speed;
-  if (r.IsKeyDown(r.KEY_LEFT) && playerX > 0) playerX -= speed;
-  if (r.IsKeyDown(r.KEY_DOWN) && playerY < screenHeight) playerY += speed;
-  if (r.IsKeyDown(r.KEY_UP) && playerY > 0) playerY -= speed;
+// while (!r.WindowShouldClose()) {
+//   if (r.IsKeyDown(r.KEY_RIGHT) && playerX < screenWidth) playerX += speed;
+//   if (r.IsKeyDown(r.KEY_LEFT) && playerX > 0) playerX -= speed;
+//   if (r.IsKeyDown(r.KEY_DOWN) && playerY < screenHeight) playerY += speed;
+//   if (r.IsKeyDown(r.KEY_UP) && playerY > 0) playerY -= speed;
 
-  const miniX = playerX * (mapSize / screenWidth);
-  const miniY = playerY * (mapSize / screenHeight);
+//   const miniX = playerX * (mapSize / screenWidth);
+//   const miniY = playerY * (mapSize / screenHeight);
 
-  r.BeginTextureMode(miniMap);
-  r.ClearBackground(r.DARKGRAY);
-  r.DrawCircle(miniX, miniY, 4, r.RED);
-  r.EndTextureMode();
+//   r.BeginTextureMode(miniMap);
+//   r.ClearBackground(r.DARKGRAY);
+//   r.DrawCircle(miniX, miniY, 4, r.RED);
+//   r.EndTextureMode();
 
-  r.BeginDrawing();
-  r.ClearBackground(r.LIGHTGRAY);
+//   r.BeginDrawing();
+//   r.ClearBackground(r.LIGHTGRAY);
 
-  r.DrawCircle(playerX, playerY, 20, r.BLUE);
-  r.DrawTexture(miniMap.texture, 635, 15, r.WHITE);
-  const sourceRec = {
-    x: 0,
-    y: 0,
-    width: miniMap.texture.width,
-    height: -miniMap.texture.height,
-  };
-  const position = { x: 635, y: 15 };
-  r.DrawTextureRec(miniMap.texture, sourceRec, position, r.WHITE);
+//   r.DrawCircle(playerX, playerY, 20, r.BLUE);
+//   r.DrawTexture(miniMap.texture, 635, 15, r.WHITE);
+//   const sourceRec = {
+//     x: 0,
+//     y: 0,
+//     width: miniMap.texture.width,
+//     height: -miniMap.texture.height,
+//   };
+//   const position = { x: 635, y: 15 };
+//   r.DrawTextureRec(miniMap.texture, sourceRec, position, r.WHITE);
 
-  r.EndDrawing();
-}
+//   r.EndDrawing();
+// }
 
-r.CloseWindow();
+// r.CloseWindow();
