@@ -9,7 +9,7 @@ function setup() {
   world.points = generatePoints(300, world.circle);
 
   r.SetTraceLogLevel(r.LOG_NONE);
-  r.InitWindow(windowWidth, windowHeight, "circle points");
+  r.InitWindow(windowWidth, windowHeight, "points in circle");
   r.SetTargetFPS(FPS);
 
   return world;
