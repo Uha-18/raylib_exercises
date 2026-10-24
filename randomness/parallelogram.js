@@ -14,34 +14,28 @@ function setup() {
   ];
 
   r.SetTraceLogLevel(r.LOG_NONE);
-  r.InitWindow(windowWidth, windowHeight, "points in circle");
+  r.InitWindow(windowWidth, windowHeight, "parallellogram");
   r.SetTargetFPS(FPS);
 
   return world;
 }
 
-function generatePoints(count, circle) {
-  const pointsArray = [];
-
-  for (let i = 0; i < count; i++) {
-    const angle = Math.random() * 2 * Math.PI;
-    const distance = circle.rad * Math.sqrt(Math.random());
-    const x = circle.x + distance * Math.cos(angle);
-    const y = circle.y + distance * Math.sin(angle);
-
-    pointsArray.push({ x, y });
-  }
-
-  return pointsArray;
-}
+const x1 = 50;
+const y1 = 50;
+const x2 = 180;
+const y2 = 170;
+const factor1 = 1;
+const factor2 = 1;
+const randX = x1 * factor1 + x2 * factor2;
+const randY = y1 * factor1 + y2 * factor2;
 function draw(world) {
-  const point = world.points;
   r.BeginDrawing();
   r.ClearBackground(r.BLUE);
   r.DrawLineV(point[0], point[1], r.BLACK);
   r.DrawLineV(point[1], point[2], r.BLACK);
   r.DrawLineV(point[2], point[3], r.BLACK);
   r.DrawLineV(point[3], point[0], r.BLACK);
+  r.DrawCircle(randX, randY, 5, r.YELLOW);
   r.EndDrawing();
 }
 function loop(world) {
