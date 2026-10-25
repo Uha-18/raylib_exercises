@@ -7,12 +7,10 @@ function setup() {
   r.SetTraceLogLevel(r.LOG_NONE);
   r.InitWindow(windowWidth, windowHeight, "sinewave");
   r.SetTargetFPS(FPS);
-  const world = {
-    cf: 0,
-  };
+  const world = {};
   world.center = { x: 400, y: 300, baseRadius: 200 };
-  world.numPoints = 100;
-  world.frequency = 5;
+  world.numPoints = 500;
+  world.frequency = 25;
   world.amplitude = 70;
 
   return world;
@@ -26,11 +24,12 @@ function points(world) {
 
     let x = g.calcX(world.center, radius, angle);
     let y = g.calcY(world.center, radius, angle);
+
     r.DrawCircle(x, y, 5, {
       r: Math.random() * 255,
       g: Math.random() * 255,
       b: Math.random() * 255,
-      a: Math.random() * 255,
+      a: 255,
     });
   }
 }
@@ -43,8 +42,6 @@ function draw(world) {
 }
 function loop(world) {
   while (!r.WindowShouldClose()) {
-    // update(world);
-    world.cf++;
     draw(world);
   }
 }

@@ -11,35 +11,35 @@ function setup() {
   r.SetTargetFPS(FPS);
 
   const world = {};
-  world.rec = { x: 100, y: 100, width: 200, height: 200 };
+  world.square = { x: 100, y: 100, side: 200 };
   world.circle = { x: 200, y: 200, r: 100 };
-  world.randPoints = randomPoints(world);
-
+  world.noOfPoints = 10;
+  world.randPoints = generateRandomPoints(
+    world.circle,
+    world.square,
+    world.noOfPoints,
+  );
   return world;
 }
 
-function randomPoints(world) {
-  const circle = world.circle;
-  const rec = world.rec;
-
+function generateRandomPoints(circle, square, noOfPoints) {
   const randPoints = [];
-  let insideCount = 0;
+  let pointsInCircle = 0;
 
-  for (let i = 0; i < 50; i++) {
-    const x = g.calcX(rec);
-    const y = g.calcY(rec);
+  for (let i = 0; i < noOfPoints; i++) {
+    const x = g.calcX(square);
+    const y = g.calcY(square);
     const distance = g.calcDistance(x, y, circle.x, circle.y);
 
-    if (distance <= circle.r * circle.r) {
-      insideCount++;
+    if (distance <= circle.r) {
+      pointsInCircle++;
     }
 
     randPoints.push({ x, y });
   }
-  const area = g.calcArea(randPoints, insideCount);
-  const estimatedArea = g.calcEstimatesArea(world.circle, world.rec);
-
-  console.log("area", area, "estimates", estimatedArea);
+  const ratio = g.calcRatio(randPoints, pointsInCircle);
+  const expectedRatio = g.calcExpectedRatio(circle, square);
+  console.log(`"ratio" :${ratio}`, `"expected" :  ${expectedRatio}`);
 
   return randPoints;
 }
@@ -47,9 +47,11 @@ function randomPoints(world) {
 function draw(world) {
   r.BeginDrawing();
   r.ClearBackground(r.BLUE);
-  const rec = world.rec;
+
+  const square = world.square;
   const circle = world.circle;
-  r.DrawRectangleLines(rec.x, rec.y, rec.width, rec.height, r.BLACK);
+
+  r.DrawRectangleLines(square.x, square.y, square.side, square.side, r.BLACK);
   r.DrawCircleLines(circle.x, circle.y, circle.r, r.BLACK);
 
   for (const point of world.randPoints) {
@@ -58,13 +60,16 @@ function draw(world) {
 
   r.EndDrawing();
 }
+
 function loop(world) {
   while (!r.WindowShouldClose()) {
     draw(world);
   }
 }
+
 function main() {
   const world = setup();
   loop(world);
 }
+
 main();

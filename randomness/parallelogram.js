@@ -11,9 +11,9 @@ function setup() {
 
   const world = {};
   world.points = [
-    { x: 100, y: 100 }, //top left
-    { x: 200, y: 200 }, //bottom left // x1,y1
-    { x: 350, y: 100 }, //top right//x2,y2
+    { x: 50, y: 150 }, //top left
+    { x: 150, y: 250 }, //bottom left // x1,y1
+    { x: 400, y: 150 }, //top right//x2,y2
   ];
   world.randPoints = randomPoints(world);
 
@@ -29,12 +29,12 @@ function createCoordinates(point) {
   return { x1, x2, y1, y2 };
 }
 
-function randY(world, y1, factor1, y2, factor2) {
-  return world.points[0].y + (y1 * factor1 + y2 * factor2);
-}
-
 function randX(world, x1, factor1, x2, factor2) {
   return world.points[0].x + (x1 * factor1 + x2 * factor2);
+}
+
+function randY(world, y1, factor1, y2, factor2) {
+  return world.points[0].y + (y1 * factor1 + y2 * factor2);
 }
 
 function randomPoints(world) {
