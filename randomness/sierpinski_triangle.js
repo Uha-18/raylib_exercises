@@ -11,21 +11,35 @@ function setup() {
   r.SetTargetFPS(FPS);
 
   const world = {};
-
+  world.corners = [
+    { x: 50, y: 450 }, //left
+    { x: 250, y: 50 }, //top
+    { x: 450, y: 450 }, //right
+  ];
   return world;
+}
+
+function findMiddlePoint(newValue, cornerPoint) {
+  const x = newValue.x + cornerPoint.x / 2;
+  const y = newValue.y + cornerPoint.y / 2;
+  return { x, y };
+}
+
+function points(world) {
+  let newValue = { x: 250, y: 50 };
+  const index = Math.floor(Math.random() + Math.random() + Math.random());
+  const cornerPoint = world.corners[index];
+  const middlePoint = findMiddlePoint(newValue, cornerPoint);
+  newValue = middlePoint;
+  console.log(newValue, middlePoint);
 }
 
 function draw(world) {
   r.BeginDrawing();
   r.ClearBackground(r.WHITE);
-
-  r.DrawTriangleLines(
-    { x: 50, y: 450 },
-    { x: 450, y: 450 },
-    { x: 250, y: 100 },
-    r.BLACK,
-  );
-
+  const corners = world.corners;
+  r.DrawTriangleLines(corners[0], corners[1], corners[2], r.BLACK);
+  points(world);
   r.EndDrawing();
 }
 
