@@ -31,14 +31,14 @@ function selectCorners(corner) {
 
 function generatePoints(corner, noOfPoints) {
   const point = [];
-  let newValue = { x: 250, y: 50 };
+  let newPoint = corner[1];
 
   for (i = 0; i < noOfPoints; i++) {
     const cornerPoint = selectCorners(corner);
-    const middlePoint = g.findMiddlePoint(newValue, cornerPoint);
-    newValue = middlePoint;
+    const middlePoint = g.findMiddlePoint(newPoint, cornerPoint);
+    newPoint = middlePoint;
 
-    point.push(newValue);
+    point.push(newPoint);
   }
   return point;
 }
