@@ -22,4 +22,19 @@ function calcY(rectangle) {
 function calcX(rectangle) {
   return rectangle.x + Math.random() * rectangle.side;
 }
-module.exports = { calcX, calcY, calcDistance, calcRatio, calcExpectedRatio };
+
+function findMiddlePoint(newValue, cornerPoint) {
+  const x = (newValue.x + cornerPoint.x) / 2;
+  const y = (newValue.y + cornerPoint.y) / 2;
+
+  return { x, y };
+}
+
+module.exports = {
+  calcX,
+  calcY,
+  calcDistance,
+  calcRatio,
+  calcExpectedRatio,
+  findMiddlePoint,
+};

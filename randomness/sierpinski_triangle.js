@@ -7,7 +7,7 @@ function setup() {
   const FPS = 50;
 
   r.SetTraceLogLevel(r.LOG_NONE);
-  r.InitWindow(windowWidth, windowHeight, "parallellogram");
+  r.InitWindow(windowWidth, windowHeight, "sierpinski triangle");
   r.SetTargetFPS(FPS);
 
   const world = {};
@@ -16,31 +16,46 @@ function setup() {
     { x: 250, y: 50 }, //top
     { x: 450, y: 450 }, //right
   ];
+  world.noOfPoints = 30000;
+  world.points = generatePoints(world.corners, world.noOfPoints);
+
   return world;
 }
 
-function findMiddlePoint(newValue, cornerPoint) {
-  const x = newValue.x + cornerPoint.x / 2;
-  const y = newValue.y + cornerPoint.y / 2;
-  return { x, y };
+function selectCorners(corner) {
+  const index = Math.floor(Math.random() * 3);
+  const cornerPoint = corner[index];
+
+  return cornerPoint;
 }
 
-function points(world) {
+function generatePoints(corner, noOfPoints) {
+  const point = [];
   let newValue = { x: 250, y: 50 };
-  const index = Math.floor(Math.random() + Math.random() + Math.random());
-  const cornerPoint = world.corners[index];
-  const middlePoint = findMiddlePoint(newValue, cornerPoint);
-  newValue = middlePoint;
-  console.log(newValue, middlePoint);
+
+  for (i = 0; i < noOfPoints; i++) {
+    const cornerPoint = selectCorners(corner);
+    const middlePoint = g.findMiddlePoint(newValue, cornerPoint);
+    newValue = middlePoint;
+
+    point.push(newValue);
+  }
+  return point;
 }
 
 function draw(world) {
   r.BeginDrawing();
   r.ClearBackground(r.WHITE);
-  const corners = world.corners;
-  r.DrawTriangleLines(corners[0], corners[1], corners[2], r.BLACK);
-  points(world);
+
+  for (const point of world.points) {
+    r.DrawCircleV(point, 1, r.RED);
+  }
+
   r.EndDrawing();
+}
+
+function teardown() {
+  r.CloseWindow();
 }
 
 function loop(world) {
@@ -52,6 +67,7 @@ function loop(world) {
 function main() {
   const world = setup();
   loop(world);
+  teardown();
 }
 
 main();

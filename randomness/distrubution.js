@@ -61,6 +61,10 @@ function draw(world) {
   r.EndDrawing();
 }
 
+function teardown() {
+  r.CloseWindow();
+}
+
 function loop(world) {
   while (!r.WindowShouldClose()) {
     draw(world);
@@ -70,6 +74,7 @@ function loop(world) {
 function main() {
   const world = setup();
   loop(world);
+  teardown;
 }
 
 main();
